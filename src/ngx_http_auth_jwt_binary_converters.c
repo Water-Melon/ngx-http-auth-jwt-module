@@ -33,13 +33,13 @@ int hex_to_binary( const char* str, u_char* buf, int len )
 		low,
 		high;
 	int
-		odd = len % 2;
+		odd = len % 2, i;
 	
 	if (odd) {
 		return -1;
 	}
 
-	for (int i = 0; i < len; i += 2) {
+	for (i = 0; i < len; i += 2) {
 		hex_char_to_binary( *(str + i), &high );
 		hex_char_to_binary( *(str + i + 1 ), &low );
 		

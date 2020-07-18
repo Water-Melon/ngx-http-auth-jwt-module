@@ -273,7 +273,11 @@ static ngx_int_t ngx_http_auth_jwt_handler(ngx_http_request_t *r)
 
 			loginlen = jwtcf->auth_jwt_loginurl.len;
 
+#if (NGX_SSL || NGX_COMPAT)
 			scheme = (r->connection->ssl) ? "https" : "http";
+#else
+			scheme = "http";
+#endif
 			server = r->headers_in.server;
 
 			// get the URI
